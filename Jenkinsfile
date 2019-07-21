@@ -7,12 +7,13 @@ pipeline {
     environment {
         registry = "orantoine/front-docker"
         registryCredential = 'dockerhub'
+
     }
     stages {
         stage('Build'){
             steps{
                 script {
-                        dockerImage = docker.build registry + ":"+${env.BUILD_NUMBER}
+                        dockerImage = docker.build registry + ":${env.BUILD_NUMBER}"
                 }
             }
         }
